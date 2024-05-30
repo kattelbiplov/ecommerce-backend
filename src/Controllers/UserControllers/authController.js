@@ -8,7 +8,7 @@ const generateAuthToken = (userId) => {
 
 exports.registerUser = async (req, res) => {
     try {
-        const { fullName, email, phone, password } = req.body;
+        const { fullName, email, phone, password,role } = req.body;
 
         // Check if user already exists
         let user = await User.findOne({ $or: [{ email }, { phone }] });
@@ -24,7 +24,8 @@ exports.registerUser = async (req, res) => {
             fullName,
             email,
             phone,
-            password: hashedPassword
+            password: hashedPassword,
+            role
         });
 
         // Save user to the database

@@ -7,10 +7,10 @@ const profileController = require('../../Controllers/UserControllers/profileCont
 router.use(authMiddleware);
 
 // GET user profile
-router.get('/profile', profileController.getUserProfile);
+router.get('/get-profile', authMiddleware,profileController.getUserProfile);
 
 // PUT update user profile
-router.put('/profile', profileController.updateUserProfile);
+router.put('/edit-profile', authMiddleware,profileController.updateUserProfile);
 
 // PUT change user password
 router.put('/password', profileController.changeUserPassword);

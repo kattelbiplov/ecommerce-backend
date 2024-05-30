@@ -19,7 +19,15 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    isAdmin: { type: Boolean, default: false }
+    rewardPoint:{
+        type:Number,
+        default:0
+    },
+    role: {
+        type: String,
+        enum: ['admin', 'user'], 
+        default: 'user'
+    }
 });
 
 const User = mongoose.model('User', userSchema);
